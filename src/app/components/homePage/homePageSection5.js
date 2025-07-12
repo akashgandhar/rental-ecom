@@ -79,6 +79,7 @@ const HomePageSection5 = () => {
           <Button
             variant="text"
             endIcon={<span>→</span>}
+            }
             sx={{
               color: "#FF8D01",
               fontWeight: 600,
