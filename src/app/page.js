@@ -1,24 +1,24 @@
 "use client";
 import React from 'react';
-import Header from "./components/header/index";
-import HomePageSection1 from "./components/homePage/homePageSection1";
-import HomePageSection2 from "./components/homePage/homePageSection2";
-import HomePageSection5 from "./components/homePage/homePageSection5";
-import HomePageSection6 from './components/homePage/homePageSection6';
-import HomePageSection7 from './components/homePage/homePageSection7';
 import { Box } from '@mui/material';
+import Header from "./components/header/Header";
+import HeroSection from "./components/sections/HeroSection";
+import EquipmentSection from "./components/sections/EquipmentSection";
+import ServicesSection from "./components/sections/ServicesSection";
+import WhyChooseUsSection from './components/sections/WhyChooseUsSection';
+import FAQSection from './components/sections/FAQSection';
 
-const Index = () => {
+const HomePage = () => {
   return (
     <Box sx={{ bgcolor: "#FAFBFC" }}>
       <Header />
-      <HomePageSection1 />
-      <HomePageSection2 />
-      <HomePageSection5 />
-      <HomePageSection6 />
-      <HomePageSection7 />
+      <HeroSection />
+      <EquipmentSection />
+      <ServicesSection />
+      <WhyChooseUsSection />
+      <FAQSection />
     </Box>
   )
 }
 
-export default Index;
+export default HomePage;
