@@ -19,9 +19,11 @@ import { useRouter } from "next/navigation";
 import bannerVideo from "../../../public/assets/-5ac0-4917-a8dd-41d72f383edd.mp4";
 import catImage from "../../../public/assets/Frame 162.png";
 import { API_DOMAIN } from "@/app/helper/constant";
+import { Crushed } from "next/font/google";
 
 // 🔧 Hero Section with Search
-const HeroSection = ({ search, setSearch, productList, handleFilter, router }) => (
+const HeroSection = ({ search, setSearch, productList, handleFilter, router }) => 
+  (
   <Box
     sx={{
       position: "relative",
@@ -59,63 +61,40 @@ const HeroSection = ({ search, setSearch, productList, handleFilter, router }) =
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(13, 27, 57, 0.7)",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         zIndex: 0,
       }}
     />
 
-    <Container sx={{ position: "relative", zIndex: 1, maxWidth: "1200px" }}>
-      <Typography 
-        variant="h1" 
-        sx={{ 
-          fontWeight: 700,
-          fontSize: { xs: "32px", sm: "48px", md: "64px" },
-          lineHeight: { xs: "40px", sm: "56px", md: "72px" },
-          letterSpacing: "0.02em",
-          textTransform: "uppercase",
-          mb: 3,
-          fontFamily: "'Inter', sans-serif"
-        }}
-      >
-        RENT EQUIPMENT FASTER & BETTER
+    <Container sx={{ position: "relative", zIndex: 1 }}>
+      <Typography variant="h3" fontWeight="bold" sx={{ marginInline: "20px", textTransform:"uppercase", fontSize:"64px" }}>
+      Rent EqUipment Faster & Better
       </Typography>
-      
       <Typography
-        variant="h6"
-        sx={{
-          fontSize: { xs: "14px", sm: "16px", md: "18px" },
-          lineHeight: "28px",
-          maxWidth: "600px",
-          mx: "auto",
-          mb: 5,
-          opacity: 0.9,
-          fontWeight: 400,
-          fontFamily: "'Inter', sans-serif"
-        }}
+        variant="body1"
+        mt={2}
+        maxWidth="600px"
+        mx="auto"
+        sx={{ fontSize: "16px" }}
       >
         Browse from a wide range of quality-checked construction equipment. Rent,
         buy, or sell in just a few clicks.
       </Typography>
 
-      {/* Search Bar */}
-      <Box 
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mb: 6
-        }}
-      >
-        <Box
+      {/* Search Bar with Button */}
+      <Box mt={3} display="flex" justifyContent="center">
+        <Box style={{padding:"7px 10px"}}
           sx={{
             display: "flex",
             alignItems: "center",
             bgcolor: "white",
-            borderRadius: "50px",
+            borderRadius: "30px",
             overflow: "hidden",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+            boxShadow: 2,
             maxWidth: "600px",
             width: "100%",
-            height: "56px"
+            marginTop: "20px",
+            px: 2,
           }}
         >
           <Autocomplete
@@ -140,90 +119,66 @@ const HeroSection = ({ search, setSearch, productList, handleFilter, router }) =
                   disableUnderline: true,
                   startAdornment: (
                     <InputAdornment position="start">
-                      <SearchIcon sx={{ color: "#888", ml: 2 }} />
+                      <SearchIcon sx={{ color: "#888" }} />
                     </InputAdornment>
                   ),
                   sx: {
-                    height: "56px",
-                    pl: 1,
-                    fontSize: "16px",
-                    fontFamily: "'Inter', sans-serif"
+                    bgcolor: "white",
+                    borderRadius: "30px 0 0 30px",
+                    height: "48px",
+                    pl: 2,
                   },
                 }}
               />
             )}
             sx={{ flexGrow: 1 }}
           />
-          
-          <Button
+{/* <a href={`/productDetails?id=${selectedProduct?.id}`} >
+            <Button
             variant="contained"
+            // onClick={() => console.log("Search clicked:", search)}
             sx={{
               bgcolor: "#1D3058",
               color: "white",
-              height: "56px",
-              px: 4,
-              fontWeight: 600,
-              borderRadius: "0 50px 50px 0",
-              fontSize: "14px",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              fontFamily: "'Inter', sans-serif",
-              "&:hover": { bgcolor: "#152544" },
-              minWidth: "180px"
+              height: "40px",
+              px: 3,
+              fontWeight: "bold",
+              ml: 2,
+              borderRadius: "30px",
+              "&:hover": { bgcolor: "#1D3058" },
             }}
-            onClick={() => {
-              const selectedProduct = productList.find((p) => p.name === search);
-              if (selectedProduct?.id) {
-                router.push(`/productDetails?id=${selectedProduct.id}`);
-              } else {
-                alert("Please select a valid product from suggestions.");
-              }
-            }}
+
+            // onClick={() => ("/productDetails")}
           >
             RENT EQUIPMENT
           </Button>
-        </Box>
-      </Box>
+          </a> */}
+          <Button
+  variant="contained"
+  sx={{
+    bgcolor: "#1D3058",
+    color: "white",
+    height: "40px",
+    px: 3,
+    fontWeight: "bold",
+    ml: 2,
+    borderRadius: "30px",
+    padding:"25px",
+    "&:hover": { bgcolor: "#1D3058" },
+  }}
+  onClick={() => {
+    const selectedProduct = productList.find((p) => p.name === search);
+    if (selectedProduct?.id) {
+      router.push(`/productDetails?id=${selectedProduct.id}`);
+    } else {
+      alert("Please select a valid product from suggestions.");
+    }
+  }}
+>
+  RENT EQUIPMENT
+</Button>
 
-      {/* Category Tags */}
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: 2,
-          maxWidth: "800px",
-          mx: "auto"
-        }}
-      >
-        {[
-          "Excavator", "Boom Lift", "Skid Steer", "Bulldozer", 
-          "Crane", "Forklift", "Compactor", "Generator"
-        ].map((tag) => (
-          <Box
-            key={tag}
-            sx={{
-              bgcolor: "rgba(255, 255, 255, 0.15)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              borderRadius: "25px",
-              px: 3,
-              py: 1,
-              color: "white",
-              fontSize: "14px",
-              fontWeight: 500,
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              fontFamily: "'Inter', sans-serif",
-              "&:hover": {
-                bgcolor: "rgba(255, 255, 255, 0.25)",
-                transform: "translateY(-2px)"
-              }
-            }}
-          >
-            {tag}
-          </Box>
-        ))}
+        </Box>
       </Box>
     </Container>
   </Box>
@@ -236,52 +191,29 @@ const EquipmentCategory = ({ categories }) => {
   return (
     <Box
       sx={{
+        py: 5,
         position: "absolute",
-        top: "calc(100vh - 80px)",
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 10,
-        width: "100%",
-        maxWidth: "1200px",
-        px: 2
+        background: "none",
+        top: "96%",
+        left: "25%",
       }}
     >
       <Grid container spacing={3} justifyContent="center">
-        {categories?.slice(0, 6).map((item) => (
+        {categories?.map((item) => (
           <Grid item key={item.id}>
-            <Box
+            <Box style={{cursor:"pointer"}}
               sx={{
-                p: 3,
-                borderRadius: "20px",
+                p: 2,
+                borderRadius: "15px",
                 bgcolor: "white",
                 textAlign: "center",
-                width: "140px",
-                height: "140px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-8px)",
-                  boxShadow: "0 16px 48px rgba(0,0,0,0.15)"
-                }
+                width: "120px",
+                boxShadow: 3,
               }}
               onClick={() => router.push(`/listingPage?id=${item?.id}`)}
             >
-              <Image src={catImage} alt="image" width={60} height={60} />
-              <Typography 
-                sx={{
-                  fontSize: "14px", 
-                  fontWeight: 600, 
-                  mt: 2,
-                  color: "#1D3058",
-                  fontFamily: "'Inter', sans-serif",
-                  lineHeight: "18px"
-                }}
-              >
+              <Image src={catImage} alt="image" width={50} height={50} />
+              <Typography fontSize="14px" fontWeight="bold" mt={1}>
                 {item.name}
               </Typography>
             </Box>
@@ -324,6 +256,7 @@ export default function HomePage() {
     const userInfo = localStorage.getItem("userInfoData");
     const existingGuestInfo = localStorage.getItem("guestInfo");
   
+    // ✅ Skip API call if either userInfoData or guestInfo is present
     if (userInfo || existingGuestInfo) {
       console.log("User or Guest already exists. Skipping API call.");
       return;
@@ -335,7 +268,7 @@ export default function HomePage() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({})
+        body: JSON.stringify({}) // optional payload
       });
   
       if (response.ok) {
@@ -349,6 +282,7 @@ export default function HomePage() {
       console.error("❌ API error:", error);
     }
   };
+  
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -364,15 +298,16 @@ export default function HomePage() {
   }, []);
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <>
       <HeroSection
         search={search}
         setSearch={setSearch}
         productList={productList}
         handleFilter={handleFilter}
-        router={useRouter()}
+        router={useRouter()} // ✅ pass router
+
       />
       <EquipmentCategory categories={categories} />
-    </Box>
+    </>
   );
 }

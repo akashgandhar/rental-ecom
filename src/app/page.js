@@ -1,24 +1,29 @@
-"use client";
+"use client"
 import React from 'react';
-import { Box } from '@mui/material';
-import Header from "./components/header/Header";
-import HeroSection from "./components/sections/HeroSection";
-import EquipmentSection from "./components/sections/EquipmentSection";
-import ServicesSection from "./components/sections/ServicesSection";
-import WhyChooseUsSection from './components/sections/WhyChooseUsSection';
-import FAQSection from './components/sections/FAQSection';
+import Header from "./components/header/index";
+import HomePageSection1 from "./components/homePage/homePageSection1";
+import HomePageSection2 from "./components/homePage/homePageSection2";
+import HomePageSection3 from './components/homePage/homePageSection3';
+import HomePageSection4 from './components/homePage/homePageSection4';
+import HomePageSection5 from "./components/homePage/homePageSection5"
+import HomePageSection6 from './components/homePage/homePageSection6';
+import HomePageSection7 from './components/homePage/homePageSection7';
 
-const HomePage = () => {
+
+const Index = () => {
   return (
-    <Box sx={{ bgcolor: "#FAFBFC" }}>
+    <div>
       <Header />
-      <HeroSection />
-      <EquipmentSection />
-      <ServicesSection />
-      <WhyChooseUsSection />
-      <FAQSection />
-    </Box>
+      <HomePageSection1 />
+      <HomePageSection2 />
+       {/* <HomePageSection3 />
+      <HomePageSection4 /> */}
+      <HomePageSection5 />
+      <HomePageSection6 />
+      <HomePageSection7 />
+      
+    </div>
   )
 }
 
-export default HomePage;
+export default Index
